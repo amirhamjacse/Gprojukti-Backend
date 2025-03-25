@@ -1,0 +1,74 @@
+{% load static %}
+{% load inventory_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Transfer Print</title>
+    <style>
+        body {
+            text-align: center; /* Center align all text content */
+            font-family: Arial, sans-serif; /* Set a default font family */
+        }
+
+        table {
+            margin: 0 auto; /* Center align the table */
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 80%; /* Adjust the width of the table as needed */
+            margin-top: 20px; /* Add some top margin */
+        }
+
+        td,
+        th {
+            border: 0.5px solid #000000;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #c1c1c1;
+        }
+
+        h1 {
+            margin-top: 20px; /* Add top margin for the headings */
+            margin-bottom: 0px;
+            font-size: 24px; /* Increase the font size of the h1 heading */
+        }
+    </style>
+</head>
+
+<body> 
+    <img src="https://i.ibb.co/PDXj1yC/gprojukti-logo.png" alt="gprojukti-logo" border="0" width="200px">
+    <h1>Chalan</h1>
+    <h2>Requisition No: #{{ requisition_no }}</h2>
+    <h2 style="border: 1px solid black; padding-top: 25%; padding-bottom: 5%;">Transfer Type: Stock {{ transfer_type }}</h2>
+    <h2>From: {{ from_shop_name }} -- To Shop: {{ to_shop_name }}</h2>
+    <h2>Created Date: {{  created_at }}</h2>
+    <table>
+        <thead>
+            <tr>
+                <th style="text-align: center;">Product Name</th>
+                <th style="text-align: center;">Product Code</th>
+                <th style="text-align: center;">SKU</th>
+                <th style="text-align: center;">Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obj in data %}
+            <tr>
+                <td style="text-align: center;">{{ obj.product_name }}</td>
+                <td style="text-align: center;">{{ obj.product_code }}</td>
+                <td style="text-align: center;">{{ obj.barcodes }}</td>
+                <td style="text-align: center;">{{ obj.barcode_count }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>

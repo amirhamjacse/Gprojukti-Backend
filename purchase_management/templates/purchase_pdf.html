@@ -1,0 +1,188 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase Request Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0px;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table th, table td {
+            padding: 8px 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #f2f2f2;
+        }
+
+        /* Flexbox Layout */
+        .content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .left-side,
+        .right-side {
+            width: 48%; /* Ensure they take up 48% of the container width */
+
+        }
+
+        .info-item {
+            margin-bottom: 10px;
+        }
+
+        .left-side {
+            text-align: left;
+        }
+
+        .right-side {
+            text-align: right;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .content {
+                flex-direction: column;
+            }
+
+            .left-side,
+            .right-side {
+                width: 100%;
+                text-align: left; /* Stack and align left in small screens */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Header and Top Information on Same Line -->
+    <div class="content">
+        <div class="left-side">
+            <div class="info-item">
+                <div style="text-align: center;">
+                    <img src="https://i.ibb.co/qYv9gmQ/gprojukti-logo.png" width="150px" alt="gprojukti-logo" border="0">
+                </div>                
+                <h1 style="text-align: center;">Purchase Request Details</h1>
+            </div>
+            <div class="info-item">
+                <p><strong>Requisition No:</strong> {{ purchase_id }}</p>
+            </div>
+            <div class="info-item">
+                <p><strong>Status:</strong> {{ status }}</p>
+            </div>
+            <div class="info-item">
+                <p><strong>Created At:</strong> {{ created_at }}</p>
+            </div>
+            <div class="info-item">
+                <p><strong>Updated At:</strong> {{ updated_at }}</p>
+            </div>
+        </div>
+
+        <div class="right-side">
+            <div class="info-item">
+                <p style="padding-left:450px; padding-top: -110px;"><strong>Current Date & Time:</strong> {{ current_datetime }}</p>
+            </div>
+            <div class="info-item">
+                <h3 style="padding-left:450px;">Initiator: {{ initiator_name }}</h3>
+            </div>
+            <div class="info-item">
+                <p style="padding-left:450px;"><strong>Assigned To:</strong> {{ currently_assigned_to_name }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Table -->
+    <h3 style="padding-top:20px; padding-bottom: 0px; margin-bottom:0px;">Products:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Specification</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+                <tr>
+                    <td><strong>{{ product.product_name }}</strong></td>
+                    <td>RAM: {{ product.specification.ram }}, Color: {{ product.specification.color }}, Storage: {{ product.specification.storage }}</td>
+                    <td>{{ product.required_quantity }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Purchase Data Table -->
+    <h3 style="padding-bottom: 0px; margin-bottom:0px;">Purchase Request Data:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Required Quantity</th>
+                <th>Vendor</th>
+                <th>Previous Unit Price</th>
+                <th>Quoted Price</th>
+                <th>Budget</th>
+                <th>Approval Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in purchase_data %}
+            
+                <tr {% if data.is_approved %} style="background-color: #edffcb;" {% endif %}>
+                    <td><strong>{{ data.product }}</strong></td>
+                    <td>{{ data.required_qty }}</td>
+                    <td>{{ data.vendor }}</td>
+                    <td>{{ data.previous_unit_price }}</td>
+                    <td>{{ data.quoted_price }}</td>
+                    <td>{{ data.required_budget }}</td>
+                    <td>{% if data.is_approved %} Yes {% else %} No {% endif %}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Payments Table -->
+    <h3 style="padding-bottom: 0px; margin-bottom:0px;">Payments:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Payment Date</th>
+                <th>Amount</th>
+                <th>Mode</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for payment in purchase_payments %}
+            <tr>
+                <td>{{ payment.payment_date }}</td>
+                <td>{{ payment.amount }}</td>
+                <td>{{ payment.payment_mode }}</td>
+                <td>{{ payment.note }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h3>Signature</h3>
+
+</body>
+</html>

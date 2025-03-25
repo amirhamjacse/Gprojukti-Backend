@@ -1,0 +1,726 @@
+{% load inventory_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gprojukti pdf</title>
+    <style>
+        * {
+         margin: 0px;
+         padding: 0;
+         font-family: 'Lato', sans-serif;
+         -webkit-print-color-adjust: exact !important;
+         }
+         @page {
+         size: A4 landscape;
+         margin: 0;
+         }
+         .row {
+         width: 100%
+         }
+         .products-data {
+         padding: 10px 2px;
+         font-weight: 500;
+         border-bottom: 1px solid #000;
+         }
+         table {
+         width: 100%;
+         }
+         td {
+         width: 50%;
+         padding: 10px;
+         /* box-sizing: border-box; */
+         }
+         * {
+         margin: 0px;
+         padding: 0;
+         font-family: 'Lato', sans-serif;
+         -webkit-print-color-adjust: exact !important;
+         }
+         .container {
+         width: 100%;
+         margin: 0 auto;
+         }
+         .row {
+         width: 100%
+         }
+         .products-data {
+         padding: 10px 2px;
+         font-weight: 500;
+         border-bottom: 1px solid #000;
+         }
+         table {
+         border-spacing: 0px;
+         }
+         .company-information {
+         padding: 0% 0% 0% 0%;
+         }
+         /* company information css*/
+         .company-information table {}
+         .company-information table tr {}
+         .company-information table th {}
+         .company-information table th .company-description {
+         text-align: left;
+         }
+         .company-information table th .company-description .company-name h1 {
+         font-size: 8px;
+         }
+         .company-information table th .company-description .company-details {
+         padding: 0px 0;
+         }
+         .company-information table th .company-description .company-details h4 {
+         font-weight: 600;
+         padding: 0px;
+         font-size: 8px;
+         }
+         .company-information table th .company-description .company-details h4 span {
+         font-weight: normal;
+         }
+         /* company information end*/
+         .invoice-title {}
+         /* customer information start*/
+         .order-information {}
+         .order-information .customer-details {}
+         .order-information .customer-details h4 {
+         font-weight: 600;
+         padding: 0px 0;
+         font-size: 8px;
+         }
+         .order-information .customer-details h4 span {
+         font-weight: normal;
+         }
+         .order-information .order-details h4 {
+         font-weight: 600;
+         padding: 0 0;
+         font-size: 8px;
+         }
+         .order-information .order-details span {
+         font-weight: normal;
+         }
+         /* customer information end*/
+         .item-list-lg {
+         width: 32%;
+         padding: 1px 0px;
+         font-size: 8px;
+         }
+         .item-list-sm {
+         width: 18%;
+         text-align: center;
+         padding: 3px 0px;
+         font-size: 8px;
+         }
+         /* products section css start*/
+         .products-details {}
+         .products-details .item-price-box {}
+         .products-details .item-price-box .note-box {
+         text-align: left;
+         vertical-align: top;
+         }
+         .products-details .item-price-box .note-box h4 {
+         padding-top: 10px;
+         }
+         .products-details .item-price-box .note-box p {
+         font-size: 5px;
+         font-weight: 400;
+         padding: 5px;
+         border: 1px solid #d6d6d6;
+         margin: 10px 151px 10px 0;
+         }
+         .products-details .item-price-box .item-price-total-box {
+         vertical-align: top;
+         padding: 10px 0;
+         }
+         .products-details .item-price-box .item-price-total-box .price-box {
+         text-align: left;
+         /*border-bottom: 1px solid #d6d6d6; */
+         padding: 0px;
+         font-size: 8px;
+         }
+         .products-details .item-price-box .item-price-total-box .price-box h4 {
+         padding: 0px 0;
+         }
+         .products-details .item-price-box .item-price-total-box .price-box h4 span {
+         font-weight: 500;
+         }
+         .products-details .item-price-box .item-price-total-box .total-price-box {
+         text-align: left;
+         padding: 0px;
+         }
+         .products-details .item-price-box .item-price-total-box .total-price-box h4 {
+         font-size: 8px;
+         }
+         .products-details .item-price-box .item-price-total-box .total-price-box span {}
+         /* products section css end*/
+         .terms {
+         padding-top: 30px;
+         }
+         .terms .temrs-headline {}
+         .terms .temrs-headline h4 {
+         padding-bottom: 10px;
+         }
+         .terms .temrs-headline p {}
+    </style>
+</head>
+
+<body style="margin: 0; padding: 0; font-family: 'Lato', sans-serif;">
+    <table>
+        <tr>
+            <!-- First Column -->
+            <td style=" border: #000 !important; ">
+                <header class="company-information">
+                    <div class="row">
+                        <table>
+                            <tr>
+                                <th style="width: 62%;">
+                                    <div class="company-logo" style="text-align: left;">
+                                        <img src="https://i.ibb.co/4fBpRL7/gprojukti-1.jpg" alt="Grpojukti-logo">
+                                        <h1 style="font-size: 12px; padding-top:0px;">INVOICE</h1>
+                                    </div>
+                                </th>
+                                <th style="width: 38%; line-height: 0px;">
+                                    <div class="company-description">
+                                        <div class="company-name">
+                                            <h1>Gprojukti.com</h1>
+                                        </div>
+                                        <div class="company-details">
+                                            <h4 style="padding: 0px; line-height: 1px;">Address:<span> House No: 156,
+                                       Road-12, Block E, level 9,Kemal Ataturk Avenue, Banani, Dhaka</span>
+                                    </h4>
+                                            <h4 style="padding: 0px;">Phone Number:<span> 09612483247</span></h4>
+                                            <h4 style="padding: 0px;">Email:<span> info@gprojukti.com</span></h4>
+                                            <div style=" background-color:black;  width: 280px; height: 120px;">
+                                                <img alt='Barcode Generator TEC-IT' src='https://barcode.tec-it.com/barcode.ashx?data={{order_data.invoice_no}}&code=Code128' />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                    </div>
+                </header>
+                <section class="order-information">
+                    <div class="container">
+                        <div class="row">
+                            <table>
+                                <tr>
+                                    <td style="width: 52%; line-height: 0px;">
+                                        <div class="customer-details">
+                                            <h4 style="padding-top:0px; font-size:12px">
+                                    Customer Name:<span font-size:10px>
+                                    {{order_data.customer_details.name}}
+                                    <h1 style="font-size: 12px">Division:<span style="font-size:10px">
+                                       {{order_data.customer_address_details.division_name}},
+                                       </span> District:<span style="font-size:10px"> {{order_data.customer_address_details.district_name}},
+                                       </span>Area:<span style="font-size:10px"> {{order_data.customer_address_details.area_name}},
+                                       </span>Address:<span style="font-size:10px">
+                                       {{order_data.customer_address_details.address}} </span>
+                                    </h1>
+                                    <!-- <h4>Address:<span> {{order_data.customer.address}} </span></h4> -->
+                                            <h4 style="font-size:12px">Phone:<span style="font-size:10px"> {{order_data.customer_details.phone}}</span>
+                                    </h4>
+                                            <h4 style="font-size:12px">Email:<span style="font-size:10px"> {{order_data.customer_details.email}}</span></h4>
+                                        </div>
+                                    </td>
+                                    <td style="width: 48%; line-height: 0px;">
+                                        <div class="order-details">
+                                            <h3 style="font-size:12px">Order Number:<span style="font-size:10px"> {{order_data.invoice_no}}</span></h3>
+                                            <h4 style="font-size:12px">Order Date:<span style="font-size:10px"> {{order_data.order_date}}</span></h4>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <section class="products-details">
+                  <div class="container">
+                      <div class="row" style="padding:5px 0px 50px 0px;">
+                          <h5>Products Details</h5>
+                      </div>
+                  </div>
+                  <div class="container">
+                      <div class="row">
+                          <div class="item-details">
+                              <table>
+                                  <thead>
+                                      <tr style="text-align: left; background-color: #fff; color: #000;">
+                                          <th class="item-list-lg" style="border: 1px solid #000;">Product Name</th>
+                                          <th class="item-list-sm" style="border: 1px solid #000;">Unit Price</th>
+                                          <th class="item-list-sm" style="border: 1px solid #000;">Quantity</th>
+                                          <th class="item-list-sm" style="border: 1px solid #000;">Discount</th>
+                                          <th class="item-list-sm" style="border: 1px solid #000;">Tax Amount</th>
+                                          <th class="item-list-sm" style="border: 1px solid #000;">GSheba</th>
+                                          <th class="item-list-sm" style="border: 1px solid #000;">Subtotal</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      {% for item in order_data.order_items_details %}
+                                      <tr style="text-align: left;">
+                                          <td class="products-data item-list-lg" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight: normal;">
+                                              <h3>{{ item.product_details.name }} <br> ({{ item.barcode_number|default_if_none:'Barcode not found' }})</h3>
+                                          </td>
+                                          <td class="products-data item-list-sm" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight: normal;">
+                                              {{ item.selling_price }}
+                                          </td>
+                                          <td class="products-data item-list-sm" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight: normal;">
+                                              {{ item.quantity }}
+                                          </td>
+                                          <td class="products-data item-list-sm" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight: normal;">
+                                              {{ item.total_discount_amount }}
+                                          </td>
+                                          <td class="products-data item-list-sm" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight: normal;">
+                                              {{ item.total_tax_amount }}
+                                          </td>
+                                          <td class="products-data item-list-sm" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight: normal;">
+                                              {{ item.gsheba_amount }}
+                                          </td>
+                                          <td class="products-data item-list-sm" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight: normal;">
+                                              {{ item.total_net_price }}
+                                          </td>
+                                      </tr>
+                                      {% if item.gift_item_details %}
+                                      <tr style="text-align: left;">
+                                          <td style="border: 1px solid #000; padding: 2px;">
+                                              <h6>Gift Product:</h6> {{ item.gift_item_details.name }}
+                                          </td>
+                                          <td class="products-data item-list-sm" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight: normal;">-</td>
+                                          <td class="products-data item-list-sm" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight: normal;">-</td>
+                                          <td class="products-data item-list-sm" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight: normal;">-</td>
+                                          <td class="products-data item-list-sm" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight: normal;">-</td>
+                                          <td class="products-data item-list-sm" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight: normal;">-</td>
+                                          <td class="products-data item-list-sm" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight: normal;">-</td>
+                                      </tr>
+                                      {% endif %}
+                                      {% endfor %}
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="item-price-box">
+                              <table>
+                                  <tr>
+                                      <th style="width: 100%;" class="note-box">
+                                          <h4 style="font-size: 8px;">Note</h4>
+                                          <p style="font-size: 8px; font-weight: normal;">
+                                              {{ order_data.remarks|default:"-" }}
+                                          </p>
+                                      </th>
+                                      <th style="width: 30%;" class="item-price-total-box">
+                                          <div class="price-box">
+                                              <h4 style="font-size: 8px; font-weight: bold;">Total Product Price:</h4>
+                                              <h4 style="border-bottom: 1px solid #000; font-size: 8px; font-weight: bold;">
+                                                  Total Discount
+                                              </h4>
+                                              <h4 style="font-size: 8px; font-weight: bold;">Net Amount:</h4>
+                                              <h4 style="font-size: 8px; font-weight: bold;">Promo Amount:</h4>
+                                              <h4 style="font-size: 8px; font-weight: bold;">Tax Amount:</h4>
+                                          </div>
+                                          <div class="price-box">
+                                              <h4 style="font-size: 8px; font-weight: bold;">Total GSheba</h4>
+                                              <h4 style="border-bottom: 1px solid #000; font-size: 8px; font-weight: bold;">
+                                                  Delivery charge:
+                                              </h4>
+                                              <h4 style="font-size: 8px;">Payable Amount:</h4>
+                                              <h4 style="border-bottom: 1px solid #000; font-size: 8px; font-weight: bold;">
+                                                  Advance Amount
+                                              </h4>
+                                              <h4 style="font-size: 12px;">Due Amount:</h4>
+                                          </div>
+                                      </th>
+                                      <th style="width: 30%;" class="item-price-total-box">
+                                          <div class="price-box" style="text-align: right; font-size: 8px; font-weight: bold;">
+                                              <h4 style="text-align: right; font-size: 8px; font-weight: bold;">
+                                                  <span>{{ order_data.price_details.total_product_price }}</span> <span>BDT</span>
+                                              </h4>
+                                              <h4 style="border-bottom: 1px solid #000; text-align: right; font-size: 8px; font-weight: bold;">
+                                                  <span>{{ order_data.price_details.total_discount }}</span> <span>BDT</span>
+                                              </h4>
+                                              <h4 style="text-align: right; font-size: 8px; font-weight: bold;">
+                                                  <span>{{ order_data.price_details.total_net_payable_amount }}</span> <span>BDT</span>
+                                              </h4>
+                                              <h4 style="text-align: right; font-size: 8px; font-weight: bold;">
+                                                  <span>{{ order_data.price_details.total_promo_discount }}</span> <span>BDT</span>
+                                              </h4>
+                                              <h4 style="text-align: right; font-size: 8px; font-weight: bold;">
+                                                  <span>{{ order_data.price_details.total_tax_amount }}</span> <span>BDT</span>
+                                              </h4>
+                                              <h4 style="font-size: 8px; font-weight: bold;">
+                                                  <span>{{ order_data.price_details.total_gsheba_amount }}</span> <span>BDT</span>
+                                              </h4>
+                                          </div>
+                                          <div class="price-box" style="text-align: right;">
+                                              <h4 style="border-bottom: 1px solid #000; font-size: 8px; font-weight: bold;">
+                                                  <span>{{ order_data.price_details.total_delivery_charge }}</span> <span>BDT</span>
+                                              </h4>
+                                          </div>
+                                          <div class="total-price-box" style="text-align: right; font-size: 14px; font-weight: bold;">
+                                              <h4 style="font-size: 8px; font-weight: bold;">
+                                                  <span>{{ order_data.price_details.total_payable_amount }}</span> <span>BDT</span>
+                                              </h4>
+                                          </div>
+                                          <div class="total-price-box" style="text-align: right; font-size: 8px; font-weight: bold;">
+                                              <h4 style="border-bottom: 1px solid #000; font-size: 8px; font-weight: bold;">
+                                                  <span>{{ order_data.price_details.total_advance_amount }}</span> <span>BDT</span>
+                                              </h4>
+                                          </div>
+                                          <div class="total-price-box" style="text-align: right; font-size: 8px; font-weight: bold;">
+                                              <h4 style="font-size: 12px; font-weight: bold;">
+                                                  <span>{{ order_data.price_details.total_due_amount }}</span> <span>BDT</span>
+                                              </h4>
+                                          </div>
+                                      </th>
+                                  </tr>
+                              </table>
+                          </div>
+                      </div>
+                      <div>
+                          {% for order_item in order_data.order_items_details %}
+                              {% for item in order_item.warranty_details %}
+                                  <div class="products" style="height: 200px; font-size: 16px;">
+                                      <div class="products-data item-list-lg" style="padding: 2px; padding-top: 4px; font-weight: normal;">
+                                          <h3>
+                                              {% if item.warranty_type == "1_GSHEBA_WARRANTY" %}
+                                                <p>-</p>
+                                                  {% comment %} GSheba Warranty: Warranty Valid From {{ item.start_date }} To {{ item.end_date }} {% endcomment %}
+                                              {% elif item.warranty_type == "2_COMPANY_WARRANTY" %}
+                                                  Company Warranty: 
+                                                  <p>Company Warranty: Validity period: 1 month. Services will be provided by the company. Instant replacement is not possible. The process may take up to 2 weeks to complete. In this case, either service or replacement may take place. Please know more from our shop or call us at +8809612483247</p>
+                                              {% elif item.warranty_type == "3_REPLACEMENT_WARRANTY" %}
+                                                  Replacement Warranty: 
+                                                  <p>Replacement Warranty: Instant replacement is not possible. The process may take up to 2 weeks to complete. Replacement warranty will apply for internal problems only. Please check the product well before leaving the store. In case of a laptop, replacement warranty is not possible for the charger, charging point, scratch, dent, touch-screen, keyboard, power button, display, speaker, or any visible problems.</p>
+                                              {% elif item.warranty_type == "4_SERVICE_WARRANTY" %}
+                                                  Service Warranty: 
+                                                  <p>Service Warranty: Instant replacement is not possible. The process may take up to 2 weeks to complete. Only technical services will be provided. If any parts or tools are required, the cost must be borne by the customer. The customer is solely responsible for data storage and backup.</p>
+                                              {% elif item.warranty_type == "5_SUPPLIER_SERVICE_WARRANTY" %}
+                                                  Supplier Warranty: 
+                                                  <p>Supplier Warranty: Instant replacement is not possible. The process may take up to 2 weeks to complete. Only technical services will be provided. If any parts or tools are required, the cost must be borne by the customer. The customer is solely responsible for data storage and backup.</p>
+                                              {% endif %}
+                                          </h3>
+                                      </div>
+                                  </div>
+                              {% endfor %}
+                          {% endfor %}
+                      </div>
+                  </div>
+              </section>
+              
+                <div>
+
+
+                    {% if order_data.terms_conditions %}
+                    <section class="terms">
+                        <div class="container">
+                            <div class="row">
+                                <div class="temrs-headline">
+                                    <h4>{{order_data.terms_conditions.header}}</h4>
+                                    <p>{{order_data.terms_conditions.conditions|safe}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    {% endif %}
+            </td>
+            <!-- Second Column -->
+            <td style=" border: #000 !important; ">
+                <header class="company-information">
+                    <div class="row">
+                        <table>
+                            <tr>
+                                <th style="width: 62%;">
+                                    <div class="company-logo" style="text-align: left;">
+                                        <img src="https://i.ibb.co/4fBpRL7/gprojukti-1.jpg" alt="Grpojukti-logo">
+                                        <h1 style="font-size: 12px; padding-top:0px;">INVOICE</h1>
+                                    </div>
+                                </th>
+                                <th style="width: 38%; line-height: 0px;">
+                                    <div class="company-description">
+                                        <div class="company-name">
+                                            <h1>Gprojukti.com</h1>
+                                        </div>
+                                        <div class="company-details">
+                                            <h4 style="padding: 0px; line-height: 1px;">Address:<span> House No: 156,
+                                       Road-12, Block E, level 9,Kemal Ataturk Avenue, Banani, Dhaka</span>
+                                    </h4>
+                                            <h4 style="padding: 0px;">Phone Number:<span> 09612483247</span></h4>
+                                            <h4 style="padding: 0px;">Email:<span> info@gprojukti.com</span></h4>
+                                            <div style=" background-color:black;  width: 280px; height: 120px;">
+                                                <img alt='Barcode Generator TEC-IT' src='https://barcode.tec-it.com/barcode.ashx?data={{order_data.invoice_no}}&code=Code128' />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                    </div>
+                </header>
+                <section class="order-information">
+                    <div class="container">
+                        <div class="row">
+                            <table>
+                                <tr>
+                                    <td style="width: 52%; line-height: 0px;">
+                                        <div class="customer-details">
+                                            <h4 style="padding-top:0px; font-size:12px">
+                                    Customer Name:<span font-size:10px>
+                                    {{order_data.customer_details.name}}
+                                    <h1 style="font-size: 12px">Division:<span style="font-size:10px">
+                                       {{order_data.customer_address_details.division_name}},
+                                       </span> District:<span style="font-size:10px"> {{order_data.customer_address_details.district_name}},
+                                       </span>Area:<span style="font-size:10px"> {{order_data.customer_address_details.area_name}},
+                                       </span>Address:<span style="font-size:10px">
+                                       {{order_data.customer_address_details.address}} </span>
+                                    </h1>
+                                    <!-- <h4>Address:<span> {{order_data.customer.address}} </span></h4> -->
+                                            <h4 style="font-size:12px">Phone:<span style="font-size:10px"> {{order_data.customer_details.phone}}</span>
+                                    </h4>
+                                            <h4 style="font-size:12px">Email:<span style="font-size:10px"> {{order_data.customer_details.email}}</span></h4>
+                                        </div>
+                                    </td>
+                                    <td style="width: 48%; line-height: 0px;">
+                                        <div class="order-details">
+                                            <h3 style="font-size:12px">Order Number:<span style="font-size:10px"> {{order_data.invoice_no}}</span></h3>
+                                            <h4 style="font-size:12px">Order Date:<span style="font-size:10px"> {{order_data.order_date}}</span></h4>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+                <section class="products-details">
+                    <div class="container">
+                        <div class="row" style="padding:5px 0px 50px 0px;">
+                            <h5>Products Details</h5>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="item-details">
+                                <table>
+                                    <div class="item">
+                                        <tr style="text-align: left; background-color: #fff; color: #000;">
+                                            <th class="item-list-lg" style="border: 1px solid #000;">Product Name</th>
+                                            <th class="item-list-sm" style="border: 1px solid #000;">Unit Price</th>
+                                            <th class="item-list-sm" style="border: 1px solid #000;">Quantity</th>
+                                            <th class="item-list-sm" style="border: 1px solid #000;">Discount</th>
+                                            <th class="item-list-sm" style="border: 1px solid #000;">Tax Amount</th>
+                                            <th class="item-list-sm" style="border: 1px solid #000;">GSheba</th>
+                                            <th class="item-list-sm" style="border: 1px solid #000;">Subtotal</th>
+                                        </tr>
+                                    </div>
+                                    {% for item in order_data.order_items_details %}
+                                    <div class="products" style="height: 200px; font-size: 16px;">
+                                        <tr style="text-align: left;">
+                                            <td class="products-data item-list-lg" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight:normal;">
+                                                <h3>{{item.product_details.name }} ({{item.barcode_number|default_if_none:'Barcode not found' }})  </h3>
+                                            </td>
+                                            <td class="products-data item-list-sm" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight:normal;">
+                                                {{item.selling_price}}
+                                            </td>
+                                            <td class="products-data item-list-sm" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight:normal;">
+                                                {{item.quantity}}
+                                            </td>
+                                            <td class="products-data item-list-sm" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight:normal;">
+                                                {{item.total_discount_amount}}
+                                            </td>
+                                            <td class="products-data item-list-sm" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight:normal;">
+                                                {{item.total_tax_amount}}
+                                            </td>
+                                            <td class="products-data item-list-sm" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight:normal;">
+                                                {{item.gsheba_amount}}
+                                            </td>
+                                            <td class="products-data item-list-sm" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight:normal;">
+                                                {{item.total_net_price}}
+                                            </td>
+                                        </tr>
+                                        {% if item.gift_item_details %}
+                                        <td style="border: 1px solid #000; padding: 2px;">
+                                            <h6>Gift Product:</h6> {{ item.gift_item_details.name }}
+                                        </td>
+                                        <td class="products-data item-list-sm" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight:normal;">
+                                            -
+                                        </td>
+                                        <td class="products-data item-list-sm" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight:normal;">
+                                            -
+                                        </td>
+                                        <td class="products-data item-list-sm" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight:normal;">
+                                            -
+                                        </td>
+                                        <td class="products-data item-list-sm" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight:normal;">
+                                            -
+                                        </td>
+                                        <td class="products-data item-list-sm" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight:normal;">
+                                            -
+                                        </td>
+                                        <td class="products-data item-list-sm" style="border: 1px solid #000; padding: 2px; padding-top: 4px; font-weight:normal;">
+                                            -
+                                        </td>
+                                        {% endif %}
+                                    </div>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </div>
+                        <div>
+                        </div>
+                        <div class="row">
+                            <div class="item-price-box">
+                                <table>
+                                    <tr>
+                                        <th style="width: 100%;" class="note-box">
+                                            <h4 style="font-size: 8px;">Note</h4>
+                                            <p style="font-size: 8px; font-weight:normal;">
+                                                {{ order_data.remarks|default:"-" }}
+                                            </p>
+                                        </th>
+                                        <th style="width: 30%;" class="item-price-total-box">
+                                            <div class="price-box">
+                                                <h4 style="font-size: 8px;font-weight: bold;">Total Product Price:</h4>
+                                                <h4 style="border-bottom: 1px  solid #000; font-size: 8px;font-weight: bold;">
+                                          Total
+                                          Discount
+                                       </h4>
+                                                <h4 style="font-size: 8px;font-weight: bold;">Net Amount:</h4>
+                                                <h4 style="font-size: 8px;font-weight: bold;">Promo Amount:</h4>
+                                                <h4 style="font-size: 8px;font-weight: bold;">Tax Amount:</h4>
+                                            </div>
+                                            <div class="price-box">
+                                                <h4 style="font-size: 8px;font-weight: bold;">Total GSheba</h4>
+                                                <h4 style="border-bottom: 1px  solid #000; font-size: 8px;font-weight: bold;">
+                                          Delivery
+                                          charge:
+                                       </h4>
+                                                <h4 style="font-size: 8px;">Payable Amount:</h4>
+                                                <h4 style="border-bottom: 1px  solid #000; font-size: 8px;font-weight: bold;">
+                                          Advance Amount
+                                       </h4>
+                                                <h4 style="font-size: 12px;">Due Amount:</h4>
+                                            </div>
+                            </div>
+                            {% comment %}
+                            <div class="total-price-box">
+                                <h4>Total Due:</h4>
+                            </div> {% endcomment %}
+                            </th>
+                            <th style="width: 30%;" class="item-price-total-box">
+                                <div class="price-box" style="text-align: right;font-size: 8px;font-weight: bold;">
+                                    <h4 style="text-align: right;font-size: 8px;font-weight: bold;"><span>
+                        {{order_data.price_details.total_product_price}}
+                        </span> <span>BDT</span></h4>
+                                    <h4 style="border-bottom: 1px  solid #000;text-align: right;font-size: 8px;font-weight: bold;">
+                        <span>
+                        {{order_data.price_details.total_discount}} </span>
+                        <span>BDT</span>
+                        </h4>
+                                    <h4 style="text-align: right;font-size: 8px;font-weight: bold;"><span>
+                        {{order_data.price_details.total_net_payable_amount}}
+                        </span>
+                        <span>BDT</span>
+                        </h4>
+                                    <h4 style="text-align: right;font-size: 8px;font-weight: bold;"><span>
+                        {{order_data.price_details.total_promo_discount}}
+                        </span>
+                        <span>BDT</span>
+                        </h4>
+                                    <h4 style="text-align: right;font-size: 8px;font-weight: bold;"><span>
+                        {{order_data.price_details.total_tax_amount}}
+                        </span>
+                        <span>BDT</span>
+                        </h4>
+                                    <h4 style="font-size: 8px;font-weight: bold;"><span>
+                        {{order_data.price_details.total_gsheba_amount}}
+                        </span>
+                        <span>BDT</span>
+                        </h4>
+                                </div>
+                                <div class="price-box" style="text-align: right;">
+                                    <h4 style="border-bottom: 1px  solid #000;font-size: 8px;font-weight: bold;"><span>
+                        {{order_data.price_details.total_delivery_charge}}
+                        </span> <span>BDT</span></h4>
+                                </div>
+                                <div class=" total-price-box" style="text-align: right;font-size: 8px;font-weight: bold;">
+                                    <h4 style="font-size: 8px;font-weight: bold;"><span>
+                        {{order_data.price_details.total_payable_amount}}
+                        </span>
+                        <span>BDT</span>
+                        </h4>
+                                </div>
+                                <div class=" total-price-box" style="text-align: right;font-size: 8px;font-weight: bold;">
+                                    <h4 style="border-bottom: 1px  solid #000;font-size: 8px;font-weight: bold;"><span>
+                        {{order_data.price_details.total_advance_amount}}
+                        </span>
+                        <span>BDT</span>
+                        </h4>
+                                </div>
+                                <div class=" total-price-box" style="text-align: right;font-size: 8px;font-weight: bold;">
+                                    <h4 style="font-size: 12px;font-weight: bold;"><span>
+                        {{order_data.price_details.total_due_amount}}
+                        </span>
+                        <span>BDT</span>
+                        </h4>
+                                </div>
+                            </th>
+                            </tr>
+                            </table>
+                        </div>
+
+                        <div>
+                           {% for order_item in order_data.order_items_details %}
+                           {% for item in order_item.warranty_details %}
+                               <div class="products" style="height: 200px; font-size: 16px;">
+                                   <div class="products-data item-list-lg" style="padding: 2px; padding-top: 4px; font-weight: normal;">
+                                       <h3>
+                                           {% if item.warranty_type == "1_GSHEBA_WARRANTY" %}
+                                            <p>-</p>
+                                               {% comment %} GSheba Warranty: Warranty Valid From {{ item.start_date }} To {{ item.end_date }} {% endcomment %}
+                                           {% elif item.warranty_type == "2_COMPANY_WARRANTY" %}
+                                               Company Warranty: 
+                                               <p>Company Warranty: Validity period: 1 month. Services will be provided by the company. Instant replacement is not possible. The process may take up to 2 weeks to complete. In this case, either service or replacement may take place. Please know more from our shop or call us at +8809612483247</p>
+                                           {% elif item.warranty_type == "3_REPLACEMENT_WARRANTY" %}
+                                               Replacement Warranty: 
+                                               <p>Replacement Warranty: Instant replacement is not possible. The process may take up to 2 weeks to complete. Replacement warranty will apply for internal problems only. Please check the product well before leaving the store. In case of a laptop, replacement warranty is not possible for the charger, charging point, scratch, dent, touch-screen, keyboard, power button, display, speaker, or any visible problems.</p>
+                                           {% elif item.warranty_type == "4_SERVICE_WARRANTY" %}
+                                               Service Warranty: 
+                                               <p>Service Warranty: Instant replacement is not possible. The process may take up to 2 weeks to complete. Only technical services will be provided. If any parts or tools are required, the cost must be borne by the customer. The customer is solely responsible for data storage and backup.</p>
+                                           {% elif item.warranty_type == "5_SUPPLIER_SERVICE_WARRANTY" %}
+                                               Supplier Warranty: 
+                                               <p>Supplier Warranty: Instant replacement is not possible. The process may take up to 2 weeks to complete. Only technical services will be provided. If any parts or tools are required, the cost must be borne by the customer. The customer is solely responsible for data storage and backup.</p>
+                                           {% endif %}
+                                       </h3>
+                                   </div>
+                               </div>
+                           {% endfor %}
+                       {% endfor %}
+                       
+                        </div>
+
+                    </div>
+
+                    </div>
+                    </div>
+                    </div>
+                </section>
+                {% if order_data.terms_conditions %}
+                <section class="terms">
+                    <div class="container">
+                        <div class="row">
+                            <div class="temrs-headline">
+                                <h4>{{order_data.terms_conditions.header}}</h4>
+                                <p>{{order_data.terms_conditions.conditions|safe}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

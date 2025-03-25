@@ -1,0 +1,100 @@
+<html>
+<head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>My Title</title> 
+  <style type="text/css">
+    img { page-break-before: always; }
+    @page { margin: 0; }
+  </style>
+</head> 
+<body style="margin: 0; padding: 0;">
+  <div id="invoice-POS">
+
+    <center id="top">
+      <div class="logo">
+        <img style="height:40px;width:100px;" src="https://i.ibb.co/jDV0BpJ/logo-1.png">
+      </div>
+    </center><!--End InvoiceTop-->
+
+    <div id="mid">
+      <div class="info">
+        <p style="font-size:12px">Customer Info</p>
+        <p style="font-size:12px"> 
+          Name: {{customer_details.name}}<br>
+          Phone: {{customer_details.phone}}<br>
+          Address: {{customer_address_details.address}}<br>
+          Invoice No: {{order_id}}<br>
+          Date: {{order_date}}<br>
+        </p>
+      </div>
+    </div><!--End Invoice Mid-->
+
+    <div id="bot">
+      <div id="table">
+        <hr><hr>
+        <table>
+          <tbody>
+            <tr class="tabletitle">
+              <td class="item"><p style="font-size:12px"><b>Item</b></p></td>
+              <td class="Hours"><p style="font-size:12px"><b>Qty</b></p></td>
+              <td class="Rate"><p style="font-size:12px"><b>Gsheba</b></p></td>
+              <td class="Rate"><p style="font-size:12px"><b>Sub Total</b></p></td>
+            </tr>
+
+            {% for item in items_data %}
+            <tr class="service">
+              <td class="tableitem" style="font-size:10px;width: 30%"><p class="itemtext">{{item.product_details.name}} <br>({{item.barcode_number}}) </p></td>
+              <td class="tableitem" style="font-size:12px;width: 20%"><p class="itemtext">1</p></td>
+              <td class="tableitem" style="font-size:12px;width: 20%"><p class="itemtext">{{item.gsheba_amount}} tk</p></td>
+              <td class="tableitem" style="font-size:12px;width: 30%"><p class="itemtext">{{item.selling_price}} tk</p></td>                      
+            </tr>
+            {% endfor %}
+
+            <tr class="tabletitle">
+              <td></td>
+              <td></td>
+            </tr>
+
+            <tr class="tabletitle">
+              <td></td>
+              <td class="Rate"><p style="font-size:12px"><b>VAT</b></p></td>
+              <td class="tableitem" style="font-size:12px;width: 30%"><p class="itemtext">{{total_tax_amount}} tk</p></td>
+            </tr>
+
+            <tr class="tabletitle">
+              <td></td>
+              <td class="Rate"><p style="font-size: 12px"><b>Total</b></p></td>
+              <td class="payment"><p style="font-size: 10px"><b>{{total_product_price}} tk</b></p></td>
+            </tr>
+
+            <tr class="tabletitle">
+              <td></td>
+              <td class="Rate"><p style="font-size: 12px"><b>Promo Discount</b></p></td>
+              <td class="payment"><p style="font-size: 10px"><b>{{total_promo_discount}} tk</b></p></td>
+            </tr>
+
+            <tr class="tabletitle">
+              <td></td>
+              <td class="Rate"><p style="font-size: 12px"><b>Payable Amount</b></p></td>
+              <td class="payment"><p style="font-size: 10px"><b>{{total_payable_amount}} tk</b></p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div><!--End Table-->
+      <hr>
+      <p style="font-size: 10px"><strong>G-সেবা</strong></p>
+      <p style="font-size: 10px">
+        ইন্সট্যান্ট রিপ্লেসমেন্ট দেয়া হবে। কেনার সময়  নির্দিষ্ট অর্থের বিনিময়ে এই সেবা এক্টিভ করা হয়।
+        শুধুমাত্র উৎপাদন-জনিত ত্রুটির জন্য এই সেবা দেয়া হয়।
+        যদি শপে পণ্যটি না থেকে থাকে তবে সর্বোচ্চ 2 কর্ম দিনের মধ্যে পণ্য আপনার কাছে পৌঁছে দেয়া হবে।
+        G-সেবা চার্জ ফেরতযোগ্য নয়।
+        প্রতারণামূলক যেকোন দাবী কর্তৃপক্ষ গ্রহণ না করার পূর্ন ক্ষমতা রাখে।
+      </p>
+      <p style="font-size: 10px">রিটার্ন পলিসি নেই। তাই শপ ত্যাগের পূর্বে পণ্যটি ভালোভাবে পরীক্ষা করে নিন। রিফান্ডের ক্ষেত্রে সর্বোচ্চ ৩ কর্মদিবস প্রয়োজন। কোন নগদ অর্থ রিফান্ড করা হয় না।
+        রিফান্ড আপনার বিকাশ বা ব্যাংক একাউন্টে প্রদান করা হবে।
+      </p>
+    </div><!--End InvoiceBot-->
+  </div><!--End Invoice-->
+</body>
+</html>

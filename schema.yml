@@ -1,0 +1,74 @@
+version: "3"
+
+networks:
+  gprojukti-backend_default:
+    external:
+      name: gprojukti-backend_default
+
+
+services:
+  db:
+    image: postgis/postgis:13-3.2-alpine
+    environment:
+      - POSTGRES_USER=gprojukti
+      - POSTGRES_PASSWORD=12345
+      - POSTGRES_DB=gprojukti
+      - POSTGRES_HOST=localhost
+    ports:
+      - 2375:2376
+    extra_hosts:
+      - db:143.198.144.71
+
+  redis:
+    image: redis:5-alpine
+    ports:
+      - 6378:6379
+
+  worker:
+    build: .
+    depends_on:
+      - redis
+      - db
+      - rabbitmq
+    volumes:
+      - ./src:/app/src
+    command: bash -c "cd src/ && celery -A gporjukti_backend_v2.settings.celery worker -l info"
+    env_file:
+      - .env
+
+  flower:
+    image: mher/flower
+    environment:
+      - CELERY_BROKER_URL=amqp://myuser:mypass@rabbitmq:5673/myvhost
+      - FLOWER_PORT=8888
+    ports:
+      - 5555:8888
+    depends_on:
+      - worker
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - "5567:15673"
+      - "5673:5673"
+      - "5671:5671"
+    environment:
+      - RABBITMQ_DEFAULT_PASS=mypass
+      - RABBITMQ_DEFAULT_USER=myuser
+      - RABBITMQ_DEFAULT_VHOST=myvhost
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+      - rabbitmq
+      - redis
+    volumes:
+      - ./src:/app/src
+    command: bash -c "cd src && python manage.py runserver 0.0.0.0:8003"
+    ports:
+      - 8003:8003
+    env_file:
+      - .env

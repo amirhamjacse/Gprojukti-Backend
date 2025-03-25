@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: gprodbv2
+      POSTGRES_USER: doadmin
+      POSTGRES_PASSWORD: AVNS_GN0PG7r6T-nR_6PjGy_
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    command: >
+      bash -c "
+        python manage.py migrate &&
+        python manage.py collectstatic --noinput &&
+        for port in {9000..9010}; do
+          python manage.py runserver 0.0.0.0:$$port &
+        done
+        wait"
+    volumes:
+      - .:/code
+    ports:
+      - "9000-9010:9000-9010"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgres://doadmin:AVNS_GN0PG7r6T-nR_6PjGy_@db:5432/gprodbv2
+      - DJANGO_ALLOWED_HOSTS=productionapi.gprojukti.com,localhost,127.0.0.1
+
+  rabbitmq:
+    image: rabbitmq:latest
+    ports:
+      - "5674:5674"
+
+  celery:
+    build: .
+    command: celery -A gporjukti_backend_v2 worker -l INFO
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+      - rabbitmq
+    environment:
+      - DATABASE_URL=postgres://doadmin:AVNS_GN0PG7r6T-nR_6PjGy_@db:5432/gprodbv2
+
+volumes:
+  postgres_data:

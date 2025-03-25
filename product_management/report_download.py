@@ -1,0 +1,1 @@
+from product_management.models.product import *

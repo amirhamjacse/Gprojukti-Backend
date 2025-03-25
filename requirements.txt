@@ -1,0 +1,45 @@
+openpyxl
+# Django==3.2.4
+Django==4.2.7
+djangorestframework==3.14.0
+# djangorestframework==3.13.1
+django-cors-headers==3.10.1
+django-environ==0.8.1
+django-activity-stream==1.4.1
+drf-extra-fields==3.4.0
+python-decouple==3.6
+django-extensions==3.1.5
+djangorestframework-simplejwt==5.2.2
+django-filter==23.2
+celery==5.3.0
+drf-spectacular==0.27.1
+dj-rest-auth==4.0.1
+psycopg2-binary
+# psycopg2
+postgres==4.0
+django-debug-toolbar==3.2.4
+requests
+Pillow
+drf-user-activity-tracker
+boto3==1.20.43
+python-barcode
+reportlab
+drf-spectacular[sidecar]
+redis==3.2.0
+xhtml2pdf
+django-redis==4.12.1
+pandas
+aiohttp
+django-import-export
+# pip install "celery[redis]"
+channels
+weasyprint
+django_q
+
+channels_redis
+gunicorn==20.1.0
+
+webcolors
+wmi
+psutil
+# django-db-geventpool
